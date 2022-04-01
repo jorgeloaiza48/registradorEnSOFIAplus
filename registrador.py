@@ -57,8 +57,8 @@ for i in range(1,ultima_fila_con_datos+1):
 # Esta línea ubica la lista desplegable de los tipo de documentos de identidad
     element = driver.find_element_by_xpath('//*[@id="s1"]/select')
     dropdown = Select(element)
-    #dropdown.select_by_visible_text('Tarjeta de Identidad') # para tarjeta de identidad
-    dropdown.select_by_visible_text('Cédula de Ciudadanía') # para cédula de ciudadanía
+    dropdown.select_by_visible_text('Tarjeta de Identidad') # para tarjeta de identidad
+    #dropdown.select_by_visible_text('Cédula de Ciudadanía') # para cédula de ciudadanía
     #dropdown.select_by_visible_text('Cédula de Extranjeria') # para cédula de extranjería
     #dropdown.select_by_visible_text('PEP') # para PEP
 

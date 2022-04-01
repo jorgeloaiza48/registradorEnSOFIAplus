@@ -1,1 +1,1 @@
-Este código registra los documentos relacionados en el archivo de excel.
+Este código registra los documentos relacionados en el archivo de excel, en la plataforma del SENA denominada SENASofiaPlus.
