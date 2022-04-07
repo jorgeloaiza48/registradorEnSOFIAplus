@@ -30,6 +30,7 @@ path_name = 'F:/PythonProjects/registrador/datos_registrar_SOFIA.xlsx' # libro c
 wb = openpyxl.load_workbook(path_name)# cargo el libro donde están los datos a registrar
 sheet = wb.active# se ubica en la hoja activa del libro donde deben estar los datos a verificar
 # captura el número de la fila que contiene el último dato, es decir, la cantidad de filas con datos
+ultima_fila_con_datos=0
 ultima_fila_con_datos = sheet.max_row
 print("Cantidad de documentos =",ultima_fila_con_datos - 1)
 
@@ -57,8 +58,8 @@ for i in range(1,ultima_fila_con_datos+1):
 # Esta línea ubica la lista desplegable de los tipo de documentos de identidad
     element = driver.find_element_by_xpath('//*[@id="s1"]/select')
     dropdown = Select(element)
-    dropdown.select_by_visible_text('Tarjeta de Identidad') # para tarjeta de identidad
-    #dropdown.select_by_visible_text('Cédula de Ciudadanía') # para cédula de ciudadanía
+    #dropdown.select_by_visible_text('Tarjeta de Identidad') # para tarjeta de identidad
+    dropdown.select_by_visible_text('Cédula de Ciudadanía') # para cédula de ciudadanía
     #dropdown.select_by_visible_text('Cédula de Extranjeria') # para cédula de extranjería
     #dropdown.select_by_visible_text('PEP') # para PEP
 
@@ -271,7 +272,7 @@ for i in range(1,ultima_fila_con_datos+1):
         time.sleep(12)# este retraso es para tener tiempo de ingresar el captcha
                                       
         driver.find_element_by_xpath('//*[@id="registro_paso_4"]/div[2]/div[5]/button[2]').click()#hace click en el botón "Terminar"
-        time.sleep(2)
+        time.sleep(5)
 
         mensaje = driver.find_element_by_xpath('//*[@id="modal-content"]')#captura el mensaje obtenido despupes de hacer click en "Terminar"
         print(mensaje.text)
@@ -289,7 +290,7 @@ for i in range(1,ultima_fila_con_datos+1):
                         driver.find_element_by_xpath('//*[@id="div_captcha_code"]/input').send_keys("")
                         time.sleep(5)
                         driver.find_element_by_xpath('//*[@id="registro_paso_4"]/div[2]/div[5]/button[2]').click()#hace click en el botón "Terminar"
-                        time.sleep(2)
+                        time.sleep(5)
                         mensaje = driver.find_element_by_xpath('//*[@id="modal-content"]')
                         mensaje_corto = extraer(mensaje.text)
 
